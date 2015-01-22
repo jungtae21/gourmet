@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+# 이미지추가 (carrierwave젬과 mini_magick젬)
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
