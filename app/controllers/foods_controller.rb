@@ -23,6 +23,7 @@ class FoodsController < ApplicationController
 
   def show
 		@post = Post.find(params[:id])  
+		@comment_writer = User.where(id: session[:user_id])[0]
 	end
 
   def write
@@ -30,7 +31,8 @@ class FoodsController < ApplicationController
 
   def write_complete
   	post = Post.new
-    post.category = params[:post_category]
+    post.user_id = session[:user_id]
+	  post.category = params[:post_category]
     post.title = params[:post_title]
     post.content = params[:post_content]
     if post.save
@@ -69,7 +71,8 @@ class FoodsController < ApplicationController
 
 	def write_comment_complete
     comment = Comment.new
-    comment.post_id = params[:post_id]
+  	comment.user_id = session[:user_id]  
+		comment.post_id = params[:post_id]
     comment.content = params[:comment_content]
     comment.save
 
